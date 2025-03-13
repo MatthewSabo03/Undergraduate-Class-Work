@@ -1,0 +1,125 @@
+------------------------------------------------------------
+7.1) Test the LinkedHeapPQ constructor
+------------------------------------------------------------
+len:      0	= 0
+is_empty: True	= True
+
+------------------------------------------------------------
+7.2) Test accessing an empty LinkedHeapPQ
+------------------------------------------------------------
+None:	= None (via exception)
+None:	= None (via exception)
+
+------------------------------------------------------------
+7.3) Test the LinkedHeapPQ add method with ints keys
+------------------------------------------------------------
+len:      1			    = 1
+is_empty: False			    = False
+min:      (5, 10)		    = (5, 10)
+
+len:      2			    = 2
+is_empty: False			    = False
+min:      (2, 1)		    = (2, 1)
+
+len:      3			    = 3
+is_empty: False			    = False
+min:      (2, 1)		    = (2, 1)
+
+len:      4			    = 4
+is_empty: False			    = False
+min:      (2, 1)		    = (2, 1)
+
+len:      5			    = 5
+is_empty: False			    = False
+min:      (0, 'Should be second')   = (0, 'Should be second')
+
+len:      6			    = 6
+is_empty: False			    = False
+min:      (0, 'Should be second')   = (0, 'Should be second')
+len:      7			    = 7
+is_empty: False			    = False
+min:      (0, 'Should be second')   = (0, 'Should be second')
+
+len:      8			    = 8
+is_empty: False			    = False
+min:      (0, 'Should be <either>') = (0, 'Should be second')
+
+len:      9			    = 9
+is_empty: False			    = False
+min:      (0, 'Should be <either>') = (0, 'Should be second')
+
+len:      10			    = 10
+is_empty: False			    = False
+min:      (0, 'Should be <either>') = (0, 'Should be second')
+
+len:      11			    = 11
+is_empty: False			    = False
+min:      (0, 'Should be <either>') = (0, 'Should be second')
+
+
+------------------------------------------------------------
+7.4) Test the LinkedHeapPQ min and remove_min methods
+------------------------------------------------------------
+remove_min: (0, 'Should be <either>')	= (0, 'Should be second')
+len:        10				= 10
+is_empty:   False			= False
+
+min:        (0, 'Should be <either>')	= (0, 'Should be first')
+remove_min: (0, 'Should be <either>')	= (0, 'Should be first')
+len:        9				= 9
+is_empty:   False			= False
+
+min:        (1, ['A', 'list', 'of', 'stuff'])
+	  = (1, ['A', 'list', 'of', 'stuff'])
+remove_min: (1, ['A', 'list', 'of', 'stuff'])
+	  = (1, ['A', 'list', 'of', 'stuff'])
+len:        8				= 8
+is_empty:   False			= False
+
+min:        (2, 1)			= (2, 1)
+remove_min: (2, 1)			= (2, 1)
+len:        7				= 7
+is_empty:   False			= False
+
+min:        (5, 10)			= (5, 10)
+remove_min: (5, 10)			= (5, 10)
+len:        6				= 6
+is_empty:   False			= False
+
+min:        (10, 'Baklava')	= (10, 'Baklava')
+remove_min: (10, 'Baklava')	= (10, 'Baklava')
+len:        5				= 5
+is_empty:   False			= False
+
+min:        (14, Weird, right?')	= (14, 'Weird, right?')
+remove_min: (14, Weird, right?')	= (14, 'Weird, right?')
+len:        4				= 4
+is_empty:   False			= False
+
+min:        (15, '¡Top!')		= (15, '¡Top!')
+remove_min: (15, '¡Top!')		= (15, '¡Top!')
+len:        3				= 3
+is_empty:   False			= False
+
+min:        (23, 'My Password is Taco')	= (23, 'My Password is Taco')
+remove_min: (23, 'My Password is Taco')	= (23, 'My Password is Taco')
+len:        2				= 2
+is_empty:   False			= False
+
+min:        (47, 555.55)		= (47, 555.55)
+remove_min: (47, 555.55)		= (47, 555.55)
+len:        1				= 1
+is_empty:   False			= False
+
+min:        (123, 'Last')		= (123, 'Last')
+remove_min: (123, 'Last')		= (123, 'Last')
+len:        0				= 0
+is_empty:   True			= True
+
+------------------------------------------------------------
+7.5) Test the various key types that shouldn't be allowed
+------------------------------------------------------------
+Float key value failed. (Exception)
+String key value of an integer failed. (Exception)
+String key value failed. (Exception)
+Negative key value failed. (Exception)

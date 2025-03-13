@@ -1,0 +1,214 @@
+------------------------------------------------------------
+5.1) Test the TreeHeapPQ constructor
+------------------------------------------------------------
+len:      0	= 0
+is_empty: True	= True
+
+------------------------------------------------------------
+5.2) Test accessing an empty TreeHeapPQ
+------------------------------------------------------------
+None:	= None (via exception)
+None:	= None (via exception)
+
+------------------------------------------------------------
+5.3) Test the TreeHeapPQ add method with ints keys
+------------------------------------------------------------
+len:      1			= 1
+is_empty: False			= False
+min:      (5, 10)		= (5, 10)
+
+len:      2			= 2
+is_empty: False			= False
+min:      (2, 1)		= (2, 1)
+
+len:      3			= 3
+is_empty: False			= False
+min:      (2, 1)		= (2, 1)
+
+len:      4			= 4
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      5			= 5
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      6			= 6
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      7			= 7
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      8			= 8
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      9			= 9
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      10			= 10
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      11			= 11
+is_empty: False			= False
+min:      (-15, '¡Top!')	= (-15, '¡Top!')
+
+
+------------------------------------------------------------
+5.4) Test the TreeHeapPQ min and remove_min methods
+------------------------------------------------------------
+remove_min: (-15, '¡Top!')		= (-15, '¡Top!')
+len:        10				= 10
+is_empty:   False			= False
+
+min:        (-10, 'Baklava')		= (-10, 'Baklava')
+remove_min: (-10, 'Baklava')		= (-10, 'Baklava')
+len:        9				= 9
+is_empty:   False			= False
+
+min:        (-5, 'Weird, right?')	= (-5, 'Weird, right?')
+remove_min: (-5, 'Weird, right?')	= (-5, 'Weird, right?')
+len:        8				= 8
+is_empty:   False			= False
+
+min:        (0, 'Should be first')	= (0, 'Should be first')
+remove_min: (0, 'Should be first')	= (0, 'Should be first')
+len:        7				= 7
+is_empty:   False			= False
+
+min:        (0, 'Should be second')	= (0, 'Should be second')
+remove_min: (0, 'Should be second')	= (0, 'Should be second')
+len:        6				= 6
+is_empty:   False			= False
+
+min:        (1, ['A', 'list', 'of', 'stuff'])
+	  = (1, ['A', 'list', 'of', 'stuff'])
+remove_min: (1, ['A', 'list', 'of', 'stuff'])
+	  = (1, ['A', 'list', 'of', 'stuff'])
+len:        5				= 5
+is_empty:   False			= False
+
+min:        (2, 1)			= (2, 1)
+remove_min: (2, 1)			= (2, 1)
+len:        4				= 4
+is_empty:   False			= False
+
+min:        (5, 10)			= (5, 10)
+remove_min: (5, 10)			= (5, 10)
+len:        3				= 3
+is_empty:   False			= False
+
+min:        (23, 'My Password is Taco')	= (23, 'My Password is Taco')
+remove_min: (23, 'My Password is Taco')	= (23, 'My Password is Taco')
+len:        2				= 2
+is_empty:   False			= False
+
+min:        (47, 555.55)		= (47, 555.55)
+remove_min: (47, 555.55)		= (47, 555.55)
+len:        1				= 1
+is_empty:   False			= False
+
+min:        (123, 'Last')		= (123, 'Last')
+remove_min: (123, 'Last')		= (123, 'Last')
+len:        0				= 0
+is_empty:   True			= True
+
+------------------------------------------------------------
+5.5) Test the TreeHeapPQ add method floats as keys
+------------------------------------------------------------
+len:      11			= 11
+is_empty: False			= False
+min:      (-14.55, '¡Top!')	= (-14.55, '¡Top!')
+
+remove_min: (-14.55, '¡Top!')		  = (-14.55, '¡Top!')
+remove_min: (-10.4, 'Baklava')		  = (-10.4, 'Baklava')
+remove_min: (-4.9, 'Weird, right?')	  = (-4.9, 'Weird, right?')
+remove_min: (0.6, 'Should be first')	  = (0.6, 'Should be first')
+remove_min: (0.6, 'Should be second')	  = (0.6, 'Should be second')
+remove_min: (1.0000007, ['A', 'list', 'of', 'stuff'])
+	  = (1.0000007, ['A', 'list', 'of', 'stuff'])
+remove_min: (2.15, 1)			  = (2.15, 1)
+remove_min: (5, 10)			  = (5, 10)
+remove_min: (23.5, 'My Password is Taco') = (23.5, 'My Password is Taco')
+remove_min: (47, 555.55)		  = (47, 555.55)
+remove_min: (123.467, 'Last')		  = (123.467, 'Last')
+
+len:      0	= 0
+is_empty: True	= True
+min:      None	= None (via exception)
+
+------------------------------------------------------------
+5.6) Test the TreeHeapPQ add method strings as keys
+------------------------------------------------------------
+len:      11			= 11
+is_empty: False			= False
+min:      ('!!', '¡Top!')	= ('!!', '¡Top!')
+
+remove_min: ('!!', '¡Top!')		  = ('!!', '¡Top!')
+remove_min: (!2, 'Baklava')		  = ('!2', 'Baklava')
+remove_min: ('2.7', 'Weird, right?')	  = ('2.7', 'Weird, right?')
+remove_min: ('Apescat!', 'First')	  = ('Apescat!', 'First')
+remove_min: ('Apescat!', 'Second')	  = ('Apescat!', 'Second')
+remove_min: ('apes', ['A', 'list', 'of', 'stuff'])
+	  = ('Baklava', 10)
+remove_min: ('apescat!', 1)		  = ('apes', ['A', 'list', 'of', 'stuff'])
+remove_min: ('baklava', 10)		  = ('apescat!', 1)
+remove_min: ('zoo', 'My Password is Taco')= ('zoo', 'My Password is Taco')
+remove_min: ('åpescat!', 555.55)	  = ('åpescat!', 555.55)
+remove_min: ('æÞëşɔαէ‼֍Ὡ☺☻☼♠♣♥♦', 'Last') = ('æÞëşɔαէ‼֍Ὡ☺☻☼♠♣♥♦', 'Last')
+
+len:      0	= 0
+is_empty: True	= True
+min:      None	= None (via exception)
+
+------------------------------------------------------------
+5.7) Try to test the underlying heap structure. MAY NOT WORK!
+------------------------------------------------------------
+Element of each node will be printed each time it's seen
+	using a depth-first search
+------------------------------------------------------------
+(-15, '¡Top!')		= (-15, '¡Top!')
+(-10, 'Baklava')	= (-10, 'Baklava')
+(0, 'Should be first')	= (0, 'Should be first')
+(23, 'My Password is Taco')	= (23, 'My Password is Taco')
+leaf.get_left()		= None
+leaf.get_right()	= None
+
+(0, 'Should be first')	= (0, 'Should be first')
+(2, 1)			= (2, 1)
+leaf.get_left()		= None
+leaf.get_right()	= None
+
+(0, 'Should be first')	= (0, 'Should be first')
+(-10, 'Baklava')	= (-10, 'Baklava')
+(-5, 'Weird, right?')	= (-5, 'Weird, right?')
+(5, 10)			= (5, 10)
+leaf.get_left()		= None
+leaf.get_right()	= None
+
+(-5, 'Weird, right?')	= (-5, 'Weird, right?')
+(1, ['A', 'list', 'of', 'stuff'])
+	  = (1, ['A', 'list', 'of', 'stuff'])
+leaf.get_left()		= None
+leaf.get_right()	= None
+
+(-5, 'Weird, right?')	= (-5, 'Weird, right?')
+(-10, 'Baklava')	= (-10, 'Baklava')
+(-15, '¡Top!')		= (-15, '¡Top!')
+(0, 'Should be second')	= (0, 'Should be second')
+(123, 'Last')		= (123, 'Last')
+leaf.get_left()		= None
+leaf.get_right()	= None
+
+(0, 'Should be second')	= (0, 'Should be second')
+(47, 555.55)		= (47, 555.55)
+leaf.get_left()		= None
+leaf.get_right()	= None
+
+(0, 'Should be second')	= (0, 'Should be second')
+(-15, '¡Top!')		= (-15, '¡Top!')
+root.get_parent()	= None

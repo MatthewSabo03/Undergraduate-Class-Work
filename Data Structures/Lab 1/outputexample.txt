@@ -1,0 +1,317 @@
+I) Try to construct the Chess_Piece which should fail
+GOOD NEWS! Chess_Piece is abstract!
+-------------------------------------------------------------------------------
+
+II) Test the inherited constructor in Pawn and its optional parameters
+Pawn constructor appears to work correctly
+Optional parameter in Pawn constructor appears to work correctly
+Pawns are properly inheriting from Chess_Piece
+
+III) Test the inherited accessor methods of Chess_Piece in Pawn
+pawn1		= pawn1
+(2, 1)		= (2, 1)
+white		= white
+UP		= UP
+(10, 10)	= (10, 10)
+True		= True
+Valid moves?	= WORKS!
+		[(2, 2), (2, 3)]
+
+pawn2		= pawn2
+(3, 6)		= (3, 6)
+black		= black
+DOWN		= DOWN
+(8, 8)		= (8, 8)
+True		= True
+Valid moves?	= WORKS!
+		[(3, 5), (3, 4)]
+
+IV) Test the inherited mutator methods of place and remove in Pawn
+(2, 1)		= (2, 1)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(4, 1)		= (4, 1)
+
+V) Test the inherited mutator methods of move and take in Pawn
+--------------------------------
+Make sure pawn3 is not taken by pawn1
+True		= True
+(4, 1)		= (4, 1)
+--------------------------------
+(4, 3)		= (4, 3)
+(3, 6)		= (3, 6)
+(3, 4)		= (3, 4)
+True		= True
+False		= False
+(3, 4)		= (3, 4)
+(3, 4)		= (3, 4)
+(3, 6)		= (3, 6)
+(3, 8)		= (3, 8)
+(3, 8)		= (3, 8)
+(3, 8)		= (3, 8)
+(3, 8)		= (3, 8)
+
+VI) Test the replace method in Pawn
+False		= False
+True		= True
+(None, None)	= (None, None)
+(3, 7)		= (3, 7)
+True		= True
+False		= False
+(4, 2)		= (4, 2)
+(None, None)	= (None, None)
+True		= True
+True		= True
+(4, 2)		= (4, 2)
+(3, 7)		= (3, 7)
+
+-------------------------------------------------------------------------------
+
+VII) Test the inherited constructor in King and its optional parameters
+King constructor appears to work correctly
+Optional parameter in King constructor appears to work correctly
+Kings are properly inheriting from Chess_Piece
+
+VIII) Test the inherited accessor methods of Chess_Piece in King
+king1		= king1
+(0, 0)		= (0, 0)
+taupe		= taupe
+UP		= UP
+(4, 4)		= (4, 4)
+True		= True
+Valid moves?	= WORKS!
+		[(0, 1), (1, 1), (1, 0)]
+
+king2		= king2
+(3, 6)		= (3, 6)
+black		= black
+DOWN		= DOWN
+(8, 8)		= (8, 8)
+True		= True
+Valid moves?	= WORKS!
+		[(3, 7), (4, 7), (4, 6), (4, 5), (3, 5), (2, 5), (2, 6), (2, 7)]
+
+IX) Test the inherited mutator methods of place and remove in King
+(0, 0)		= (0, 0)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(3, 1)		= (3, 1)
+
+X) Test the inherited mutator methods of move and take in King
+--------------------------------
+Make sure pawn1 is not taken by king1 (king1 has a 4x4 board)
+True		= True
+(3, 1)		= (3, 1)
+--------------------------------
+(3, 6)		= (3, 6)
+(3, 5)		= (3, 5)
+(3, 4)		= (3, 4)
+(3, 3)		= (3, 3)
+True		= True
+False		= False
+(4, 2)		= (4, 2)
+
+-------------------------------------------------------------------------------
+
+XI) Test the inherited constructor in Knight and its optional parameters
+Knight constructor appears to work correctly
+Optional parameter in Knight constructor appears to work correctly
+Knights are properly inheriting from Chess_Piece
+
+XII) Test the inherited accessor methods of Chess_Piece in Knight
+knight1		= knight1
+(1, 4)		= (1, 4)
+green		= green
+DOWN		= DOWN
+(6, 6)		= (6, 6)
+True		= True
+Valid moves?	= WORKS!
+		[(3, 5), (3, 3), (2, 2), (0, 2)]
+
+knight2		= knight2
+(3, 5)		= (3, 5)
+white		= white
+UP		= UP
+(8, 8)		= (8, 8)
+True		= True
+Valid moves?	= WORKS!
+		[(5, 6), (5, 4), (4, 7), (4, 3), (2, 7), (2, 3), (1, 6), (1, 4)]
+
+XIII) Test the inherited mutator methods of place and remove in Knight
+(3, 5)		= (3, 5)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(3, 5)		= (3, 5)
+
+XIV) Test the inherited mutator methods of move and take in Knight
+--------------------------------
+Make sure king2 is not taken by knight2
+True		= True
+(3, 5)		= (3, 5)
+--------------------------------
+True		= True
+False		= False
+(1, 4)		= (1, 4)
+(0, 6)		= (0, 6)
+(0, 6)		= (0, 6)
+(2, 5)		= (2, 5)
+(0, 4)		= (0, 4)
+(0, 4)		= (0, 4)
+(1, 6)		= (1, 6)
+(2, 4)		= (2, 4)
+(0, 5)		= (0, 5)
+
+-------------------------------------------------------------------------------
+
+XV) Test the inherited constructor in Bishop and its optional parameters
+Bishop constructor appears to work correctly
+Optional parameter in Bishop constructor appears to work correctly
+Bishops are properly inheriting from Chess_Piece
+
+XVI) Test the inherited accessor methods of Chess_Piece in Bishop
+bishop1		= bishop1
+(3, 6)		= (3, 6)
+invisible	= invisible
+DOWN		= DOWN
+(5, 7)		= (5, 7)
+True		= True
+Valid moves?	= WORKS!
+		[(2, 5), (1, 4), (0, 3), (4, 5)]
+
+bishop2		= bishop2
+(4, 3)		= (4, 3)
+brown		= brown
+UP		= UP
+(8, 8)		= (8, 8)
+True		= True
+Valid moves?	= WORKS!
+		[(3, 2), (2, 1), (1, 0), (3, 4), (2, 5), (1, 6), (0, 7), (5, 2), (6, 1), (7, 0), (5, 4), (6, 5), (7, 6)]
+
+XVII) Test the inherited mutator methods of place and remove in Bishop
+(4, 3)		= (4, 3)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(3, 5)		= (3, 5)
+
+XVIII) Test the inherited mutator methods of move and take in Bishop
+--------------------------------
+Make sure knight2 is not taken by bishop1
+True		= True
+(3, 6)		= (3, 6)
+--------------------------------
+(3, 5)		= (3, 5)
+(6, 2)		= (6, 2)
+False		= False
+True		= True
+(4, 0)		= (4, 0)
+(0, 4)		= (0, 4)
+(0, 4)		= (0, 4)
+(3, 7)		= (3, 7)
+(2, 6)		= (2, 6)
+(3, 5)		= (3, 5)
+
+-------------------------------------------------------------------------------
+
+XIX) Test the inherited constructor in Rook and its optional parameters
+Rook constructor appears to work correctly
+Optional parameter in Rook constructor appears to work correctly
+Rooks are properly inheriting from Chess_Piece
+
+XX) Test the inherited accessor methods of Chess_Piece in Rook
+rook1		= rook1
+(0, 1)		= (0, 1)
+blue		= blue
+UP		= UP
+(4, 3)		= (4, 3)
+True		= True
+Valid moves?	= WORKS!
+		[(1, 1), (2, 1), (3, 1), (0, 0), (0, 2)]
+
+rook2		= rook2
+(4, 3)		= (4, 3)
+yellow		= yellow
+DOWN		= DOWN
+(8, 8)		= (8, 8)
+True		= True
+Valid moves?	= WORKS!
+		[(3, 3), (2, 3), (1, 3), (0, 3), (5, 3), (6, 3), (7, 3), (4, 2), (4, 1), (4, 0), (4, 4), (4, 5), (4, 6), (4, 7)]
+
+XXI) Test the inherited mutator methods of place and remove in Rook
+(4, 3)		= (4, 3)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(3, 5)		= (3, 5)
+
+XXII) Test the inherited mutator methods of move and take in Rook
+--------------------------------
+Make sure rook1 is not taken by rook2
+True		= True
+(3, 5)		= (3, 5)
+--------------------------------
+(3, 5)		= (3, 5)
+(3, 3)		= (3, 3)
+(0, 3)		= (0, 3)
+False		= False
+True		= True
+(0, 1)		= (0, 1)
+(0, 7)		= (0, 7)
+(7, 7)		= (7, 7)
+(7, 3)		= (7, 3)
+(3, 3)		= (3, 3)
+
+-------------------------------------------------------------------------------
+
+XXIII) Test the inherited constructor in Queen and its optional parameters
+Queen constructor appears to work correctly
+Optional parameter in Queen constructor appears to work correctly
+Queens are properly inheriting from Rook
+
+XXIV) Test the inherited accessor methods of Chess_Piece in Queen
+queen1		= queen1
+(2, 2)		= (2, 2)
+grey		= grey
+UP		= UP
+(5, 5)		= (5, 5)
+True		= True
+Valid moves?	= WORKS!
+		[(1, 2), (0, 2), (3, 2), (4, 2), (2, 1), (2, 0), (2, 3), (2, 4), (1, 1), (0, 0), (1, 3), (0, 4), (3, 1), (4, 0), (3, 3), (4, 4)]
+
+queen2		= queen2
+(4, 3)		= (4, 3)
+orange		= orange
+DOWN		= DOWN
+(8, 8)		= (8, 8)
+True		= True
+Valid moves?	= WORKS!
+		[(3, 3), (2, 3), (1, 3), (0, 3), (5, 3), (6, 3), (7, 3), (4, 2), (4, 1), (4, 0), (4, 4), (4, 5), (4, 6), (4, 7), (3, 2), (2, 1), (1, 0), (3, 4), (2, 5), (1, 6), (0, 7), (5, 2), (6, 1), (7, 0), (5, 4), (6, 5), (7, 6)]
+
+XXV) Test the inherited mutator methods of place and remove in Queen
+(4, 3)		= (4, 3)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(None, None)	= (None, None)
+(7, 6)		= (7, 6)
+
+XXVI) Test the inherited mutator methods of move and take in Queen
+--------------------------------
+Make sure queen1 is not taken by queen2
+True		= True
+(7, 6)		= (7, 6)
+--------------------------------
+(7, 6)		= (7, 6)
+(1, 6)		= (1, 6)
+(4, 3)		= (4, 3)
+(4, 4)		= (4, 4)
+False		= False
+True		= True
+(2, 2)		= (2, 2)
+(4, 0)		= (4, 0)
+(4, 0)		= (4, 0)
+(0, 4)		= (0, 4)
+(0, 0)		= (0, 0)
+(6, 6)		= (6, 6)

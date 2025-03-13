@@ -1,0 +1,201 @@
+------------------------------------------------------------
+2.1) Test the LinkedHeapPQ constructor
+------------------------------------------------------------
+len:      0	= 0
+is_empty: True	= True
+
+------------------------------------------------------------
+2.2) Test accessing an empty LinkedHeapPQ
+------------------------------------------------------------
+None:	= None (via exception)
+None:	= None (via exception)
+
+------------------------------------------------------------
+2.3) Test the LinkedHeapPQ add method with ints keys
+------------------------------------------------------------
+len:      1			= 1
+is_empty: False			= False
+min:      (5, 10)		= (5, 10)
+
+len:      2			= 2
+is_empty: False			= False
+min:      (2, 1)		= (2, 1)
+
+len:      3			= 3
+is_empty: False			= False
+min:      (2, 1)		= (2, 1)
+
+len:      4			= 4
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      5			= 5
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      6			= 6
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      7			= 7
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      8			= 8
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      9			= 9
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      10			= 10
+is_empty: False			= False
+min:      (-10, 'Baklava')	= (-10, 'Baklava')
+
+len:      11			= 11
+is_empty: False			= False
+min:      (-15, '¡Top!')	= (-15, '¡Top!')
+
+
+------------------------------------------------------------
+2.4) Test the LinkedHeapPQ min and remove_min methods
+------------------------------------------------------------
+remove_min: (-15, '¡Top!')		= (-15, '¡Top!')
+len:        10				= 10
+is_empty:   False			= False
+
+min:        (-10, 'Baklava')		= (-10, 'Baklava')
+remove_min: (-10, 'Baklava')		= (-10, 'Baklava')
+len:        9				= 9
+is_empty:   False			= False
+
+min:        (-5, 'Weird, right?')	= (-5, 'Weird, right?')
+remove_min: (-5, 'Weird, right?')	= (-5, 'Weird, right?')
+len:        8				= 8
+is_empty:   False			= False
+
+min:        (0, 'Should be first')	= (0, 'Should be first')
+remove_min: (0, 'Should be first')	= (0, 'Should be first')
+len:        7				= 7
+is_empty:   False			= False
+
+min:        (0, 'Should be second')	= (0, 'Should be second')
+remove_min: (0, 'Should be second')	= (0, 'Should be second')
+len:        6				= 6
+is_empty:   False			= False
+
+min:        (1, ['A', 'list', 'of', 'stuff'])
+	  = (1, ['A', 'list', 'of', 'stuff'])
+remove_min: (1, ['A', 'list', 'of', 'stuff'])
+	  = (1, ['A', 'list', 'of', 'stuff'])
+len:        5				= 5
+is_empty:   False			= False
+
+min:        (2, 1)			= (2, 1)
+remove_min: (2, 1)			= (2, 1)
+len:        4				= 4
+is_empty:   False			= False
+
+min:        (5, 10)			= (5, 10)
+remove_min: (5, 10)			= (5, 10)
+len:        3				= 3
+is_empty:   False			= False
+
+min:        (23, 'My Password is Taco')	= (23, 'My Password is Taco')
+remove_min: (23, 'My Password is Taco')	= (23, 'My Password is Taco')
+len:        2				= 2
+is_empty:   False			= False
+
+min:        (47, 555.55)		= (47, 555.55)
+remove_min: (47, 555.55)		= (47, 555.55)
+len:        1				= 1
+is_empty:   False			= False
+
+min:        (123, 'Last')		= (123, 'Last')
+remove_min: (123, 'Last')		= (123, 'Last')
+len:        0				= 0
+is_empty:   True			= True
+
+------------------------------------------------------------
+2.5) Test the LinkedHeapPQ add method floats as keys
+------------------------------------------------------------
+len:      11			= 11
+is_empty: False			= False
+min:      (-14.55, '¡Top!')	= (-14.55, '¡Top!')
+
+remove_min: (-14.55, '¡Top!')		  = (-14.55, '¡Top!')
+remove_min: (-10.4, 'Baklava')		  = (-10.4, 'Baklava')
+remove_min: (-4.9, 'Weird, right?')	  = (-4.9, 'Weird, right?')
+remove_min: (0.6, 'Should be first')	  = (0.6, 'Should be first')
+remove_min: (0.6, 'Should be second')	  = (0.6, 'Should be second')
+remove_min: (1.0000007, ['A', 'list', 'of', 'stuff'])
+	  = (1.0000007, ['A', 'list', 'of', 'stuff'])
+remove_min: (2.15, 1)			  = (2.15, 1)
+remove_min: (5, 10)			  = (5, 10)
+remove_min: (23.5, 'My Password is Taco') = (23.5, 'My Password is Taco')
+remove_min: (47, 555.55)		  = (47, 555.55)
+remove_min: (123.467, 'Last')		  = (123.467, 'Last')
+
+len:      0	= 0
+is_empty: True	= True
+min:      None	= None (via exception)
+------------------------------------------------------------
+2.6) Test the LinkedHeapPQ add method strings as keys
+------------------------------------------------------------
+len:      11			= 11
+is_empty: False			= False
+min:      ('!!', '¡Top!')	= ('!!', '¡Top!')
+
+remove_min: ('!!', '¡Top!')		  = ('!!', '¡Top!')
+remove_min: (!2, 'Baklava')		  = ('!2', 'Baklava')
+remove_min: ('2.7', 'Weird, right?')	  = ('2.7', 'Weird, right?')
+remove_min: ('Apescat!', 'First')	  = ('Apescat!', 'First')
+remove_min: ('Apescat!', 'Second')	  = ('Apescat!', 'Second')
+remove_min: ('apes', ['A', 'list', 'of', 'stuff'])
+	  = ('apes', ['A', 'list', 'of', 'stuff'])
+remove_min: ('apescat!', 1)		  = ('apescat!', 1)
+remove_min: ('baklava', 10)		  = ('baklava', 10)
+remove_min: ('zoo', 'My Password is Taco')= ('zoo', 'My Password is Taco')
+remove_min: ('åpescat!', 555.55)	  = ('åpescat!', 555.55)
+remove_min: ('æÞëşɔαէ‼֍Ὡ☺☻☼♠♣♥♦', 'Last') = ('æÞëşɔαէ‼֍Ὡ☺☻☼♠♣♥♦', 'Last')
+
+len:      0	= 0
+is_empty: True	= True
+min:      None	= None (via exception)
+
+------------------------------------------------------------
+2.7) Try to test the underlying heap structure. MAY NOT WORK!
+------------------------------------------------------------
+Going forward from the head node
+------------------------------------------------------------
+(-15, '¡Top!')		= (-15, '¡Top!')
+(-10, 'Baklava')	= (-10, 'Baklava')
+(0, 'Should be first')	= (0, 'Should be second')
+(0, 'Should be second')	= (0, 'Should be first')
+(-5, 'Weird, right?')	= (-5, 'Weird, right?')
+(123, 'Last')		= (123, 'Last')
+(47, 555.55)		= (47, 555.55)
+(23, 'My Password is Taco')	= (23, 'My Password is Taco')
+(2, 1)			= (2, 1)
+(5, 10)			= (5, 10)
+(1, ['A', 'list', 'of', 'stuff'])
+	  = (1, ['A', 'list', 'of', 'stuff'])
+tail.get_next()		= None
+
+------------------------------------------------------------
+Going backward from the tail node
+------------------------------------------------------------
+(1, ['A', 'list', 'of', 'stuff'])
+	  = (1, ['A', 'list', 'of', 'stuff'])
+(5, 10)			= (5, 10)
+(2, 1)			= (2, 1)
+(23, 'My Password is Taco')	= (23, 'My Password is Taco')
+(47, 555.55)		= (47, 555.55)
+(123, 'Last')		= (123, 'Last')
+(-5, 'Weird, right?')	= (-5, 'Weird, right?')
+(0, 'Should be second')	= (0, 'Should be first')
+(0, 'Should be first')	= (0, 'Should be second')
+(-10, 'Baklava')	= (-10, 'Baklava')
+(-15, '¡Top!')		= (-15, '¡Top!')
+head.get_previous()	= None

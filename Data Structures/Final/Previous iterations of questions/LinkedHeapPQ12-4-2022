@@ -1,0 +1,108 @@
+from PriorityQueue_Interface import PriorityQueue_Interface
+from Double_Node import DNode
+
+class LinkedHeapPQ(PriorityQueue_Interface):
+    def __init__(self):
+        self._key = None
+        self._data = None
+        self._len = 0
+        self._head = DNode()
+        self._tail = DNode()
+
+    def add(self, key, data):
+        #Checks if self._key has nodes, if not then it sets both self._data and self._key to a new DNode
+        #It then sets the head node and adds 1 to length
+        if self._key is None:
+            self._key = DNode(key)
+            self._data = DNode(data)
+            self._head = self._key
+            self._tail = self._key
+            self._len +=1
+
+        #Add the new nodes to the end of the list
+        #Determine what row the 
+        
+        #runs if self._key has nodes
+        else:
+            #Sets new data to new Nodes
+            new_nodek = DNode(key)
+            new_noded = DNode(data)
+            
+            #Iterates over self._key until it reaches the end of the list
+            if self._len > 1:
+                while self._key.get_next() is not None:
+                    self._key = self._key.get_next()
+                    self._data = self._data.get_next()
+            
+            #Adds new nodes to end of list
+            self._key.set_next(new_nodek)
+            new_nodek.set_previous(self._key)
+            self._data.set_next(new_noded)
+            new_noded.set_previous(self._data)
+            self._len+=1
+
+            parentIndex = int(self._len/2)
+            if self._len == 2:
+                if new_nodek.get_element()< self._key.get_element():
+                    self._key.set_previous(new_nodek)
+                    new_nodek.set_next(self._key)
+                    self._key.set_next(None)
+                    new_nodek.set_previous(None)
+                    self._head = new_nodek
+            else:
+                while parentIndex != 1:
+                    #resets the current node to the head of the list
+                    self._key = self._head
+
+                    #Finds parent of newly inserted node
+                    currentIndex = 1
+                    while currentIndex != parentIndex:
+                        self._key = self._key.get_next()
+                        currentIndex+=1
+
+                    #Compare element in new node and parent node, if new node is less then
+                    #swap nodes. Otherwise break
+                    if new_nodek.get_element() < self._key.get_element():
+                        prev_parent = self._key.get_previous()
+                        next_parent = self._key.get_next()
+                        prev_new = new_nodek.get_previous()
+                        next_new = new_nodek.get_next()
+                        self._key.get_previous().set_next(new_nodek)
+                        self._key.set_previous(prev_new)
+                        self._key.get_next().set_previous(new_nodek)
+                        self._key.set_next(next_new)
+                        new_nodek.get_previous().set_next(self._key)
+                        new_nodek.set_previous(prev_parent)
+                        new_nodek.get_next().set_previous(self._key)
+                        new_nodek.set_next(next_parent)
+                        parentIndex = int(currentIndex/2)
+                    else:
+                        break
+                if parentIndex == 1 and self._head.get_element != self._key:
+                    self._head = self._key
+                
+                #new_nodek.set_previous(self._key.get_previous())
+                #self._tail.set_next(self._key)
+                #self._key.get_previous().set_next(new_nodek)
+                #self._key.set_previous(self._tail)
+                #self._key.set_next(new_nodek.get_next())
+                #new_nodek.set_next(self._tail)
+                
+
+    def min(self):
+        return (self._head.get_element(), self._data.get_element())
+
+    def remove_min(self):
+        #rmin = self._key.get_element()
+        #self._key = self._key.get_next()
+        #self._key.set_previous(None)
+        #return rmin
+        pass
+
+    def is_empty(self):
+        return self._len == 0
+
+    def __len__(self):
+        return self._len
+
+#https://faculty.cs.niu.edu/~freedman/340/340notes/340heap.htm
