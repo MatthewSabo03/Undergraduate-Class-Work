@@ -1,0 +1,151 @@
+def featProb():
+    # opens excel file from specified directory
+    file = xl.readxl(fn=r"C:/Users/sabom/Downloads/cisc340_fa20_11_Data.xlsx")
+    
+    play = file.ws(ws='Sheet').col(col=5)
+    
+    # I'm so sorry
+    yPlay=0
+    nPlay=0
+    ySun = 0
+    nSun =0
+    yRain = 0
+    nRain = 0
+    yOvercast = 0
+    nOvercast = 0
+    yCold = 0
+    nCold = 0
+    yMild = 0
+    nMild = 0
+    yHot = 0
+    nHot = 0
+    yNormal = 0
+    nNormal = 0
+    yHigh = 0
+    nHigh = 0
+    yWindy = 0
+    nWindy = 0
+    yNotWindy = 0
+    nNotWindy = 0
+    
+    for i in range(0, len(play)):
+        if play[i] == 'Yes':
+            yPlay +=1
+        elif play[i] == 'No':
+            nPlay +=1
+            
+    # Overall for loop, will loop through every range to calculate probabilities of each feature
+    for num in range(1, 5):
+        colData = file.ws(ws='Sheet').col(col=num)
+        
+        for i in range(0, len(colData)):
+            match colData[i]:
+                case "Sunny":
+                    #print("Sunny")
+                    #P(B) = yPlay, nPlay
+                    #P(A) = probability of the weather being sunny
+                    #P(B|A) = number of sunny days/yPlay or nPlay
+                    if play[i] == 'Yes':
+                        ySun +=1
+                        sunY = ySun/yPlay
+                    if play[i] == 'No':
+                        nSun +=1
+                        sunN = nSun/nPlay
+                
+                case "Rainy":
+                    #print("Rain")
+                    if play[i] == 'Yes':
+                        yRain +=1
+                        rainY = yRain/yPlay
+                    if play[i] == 'No':
+                        nRain +=1
+                        rainN = nRain/nPlay
+                
+                case "Overcast":
+                    #print("Overcast")
+                    if play[i] == 'Yes':
+                        yOvercast +=1
+                        overCastY = yOvercast/yPlay
+                    if play[i] == 'No':
+                        nOvercast +=1
+                        overCastN = nOvercast/nPlay
+                
+                case "Cold":
+                    #print("Cold")
+                    cold+=1
+                    if play[i] == 'Yes':
+                        yCold+=1
+                        coldY = yCold/yPlay
+                    if play[i] == 'No':
+                        nCold+=1
+                        coldN = nCold/nPlay
+                
+                case "Mild":
+                    #print("Mild")
+                    if play[i] == 'Yes':
+                        yMild+=1
+                        mildY = yMild/yPlay
+                    if play[i] == 'No':
+                        nMild+=1
+                        mildN = nMild/nPlay
+                
+                case "Hot":
+                    #print("Hot")
+                    if play[i] == 'Yes':
+                        yHot+=1
+                        hotY = yHot/yPlay
+                    if play[i] == 'No':
+                        nHot+=1
+                        hotN = nHot/nPlay
+                
+                case "Normal":
+                    #print("Normal")
+                    if play[i] == 'Yes':
+                        yNormal+=1
+                        normalY = yNormal/yPlay
+                    if play[i] == 'No':
+                        nNormal+=1
+                        normalN = nNormal/nPlay
+                
+                case "High":
+                    #print("High")
+                    if play[i] == 'Yes':
+                        yHigh+=1
+                        highY = yHigh/yPlay
+                    if play[i] == 'No':
+                        nHigh+=1
+                        highN = nHigh/nPlay
+                
+                case "Yes":
+                    #print("Windy")
+                    if play[i] == 'Yes':
+                        yWindy+=1
+                        windyY = yWindy/yPlay
+                    if play[i] == 'No':
+                        nWindy+=1
+                        windyN = nWindy/nPlay
+                
+                case "No":
+                    # print("Not Windy")
+                    if play[i] == 'Yes':
+                        yNotWindy+=1
+                        nWindyY = yNotWindy/yPlay
+                    if play[i] == 'No':
+                        nNotWindy+=1
+                        nWindyN = nNotWindy/nPlay
+    
+    # Calculating Bayes Theorem with previous probabilities for P(X|Class)P(Class)
+    # P(X|Play=Yes)P(Play=Yes)
+    pYes = sunY*rainY*overCastY*coldY*mildY*hotY*normalY*highY*windyY*nWindyY*(yPlay/(len(play)-1))
+    
+    # P(X|Play=No)P(Play=No)
+    pNo = sunN*rainN*overCastN*coldN*mildN*hotN*normalN*highN*windyN*nWindyN*(nPlay/(len(play)-1))
+    
+    # P(X) = P(X|Play=Yes)P(Play=Yes)+P(X|Play=No)P(Play=No)
+    pX = pYes+pNo
+    
+    # P(Play=Yes|X)
+    playYesX = pYes/pX
+    
+    # P(Play=No|X)
+    playNoX = pNo/pX

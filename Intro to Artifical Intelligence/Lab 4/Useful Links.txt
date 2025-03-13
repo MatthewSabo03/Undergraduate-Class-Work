@@ -1,0 +1,4 @@
+https://medium.com/geekculture/step-by-step-decision-tree-id3-algorithm-from-scratch-in-python-no-fancy-library-4822bbfdd88f
+
+https://ai.stackexchange.com/questions/2286/how-to-calculate-the-entropy-in-the-id3-decision-tree-algorithm 
+
