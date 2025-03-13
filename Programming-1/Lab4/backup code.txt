@@ -1,0 +1,22 @@
+while True:
+		if stddraw.hasNextKeyTyped():
+			input = stddraw.nextKeyTyped()
+			if input == 'w':
+				p1_up = input
+			elif input == 's':
+				p1_down = input
+			elif input == 'o':
+				p2_up = input
+			elif input == 'l':
+				p2_down = input
+
+p1_pdl_y = .2
+	p2_pdl_y = .2
+		if user_input()== p1_up:
+			p1_pdl_y +=.1
+		elif user_input()== p1_down:
+			p1_pdl_y -=.1
+		elif user_input()== p2_up:
+			p2_pdl_y +=.1
+		elif user_input()== p2_down:
+			p2_pdl_y -=.1

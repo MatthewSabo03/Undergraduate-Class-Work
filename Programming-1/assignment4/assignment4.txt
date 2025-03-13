@@ -1,0 +1,7 @@
+1.2.1- The variable t is made equal to a, it also makes variable b equals to t which is equal to a. Then the program makes a equal to b which is equal to a so the variable a doesn't
+change
+
+1.2.9- An index error occurs because the program finds that the statement that defines "b" is out of range
+
+1.2.14- the first radius variable is not multiplying by the other radius variable first, but is dividing by mass2 because of the order of operations. Also the G variable is 
+multiplying by mass1 rather than the product of mass1 and mass2. The correct statement is force = G*((mass1*mass2))/(radius*radius) 
