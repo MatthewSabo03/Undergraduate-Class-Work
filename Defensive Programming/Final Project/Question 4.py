@@ -1,0 +1,419 @@
+import sys
+
+# Global constants
+INPUTS    = ["M", "A", "C"]
+MENU_TEXT = ["Month Count", "Analyze Data", "Calclate Expenses"]
+FUNCTIONS = ["monthCount()", "analyzeData()", "calculateExpenses()"]
+DEBUG     = False
+
+# Global Variables for Data
+debitTable = [[]]
+netTable = [[]]
+deliveredTable = [[]]
+receivedTable = [[]]
+
+numberMonths = -1
+totalNet = -1
+totalDelivered = -1
+totalReceived = -1
+
+
+#---------------------- SETUP FUNCTIONS ----------------------#
+
+
+#################################################################################
+#
+#   Function which reads a specified file and then inputs the data from the file
+#   into each globally defined list
+#
+#   Precondition: @fileName is a string
+#   Precondition:  @fileName is a valid file that exists in the programs directory
+#   Postcondition: The data from @fileName is stored in 4 global data tables: "debitTable"
+#                  "netTable", "deliveredTable", and "receivedTable"
+#   Postcondition: The file is closed before the function exits
+#   Postcondition: An error message is printed if @fileName is not a valid file
+#   Invariant:     @fileName has usable formatting
+#   Invariant:     The contents of @fileName is unaffected
+#
+#################################################################################
+def readFile(fileName):
+
+    #-------- ASSERTION TESTING --------#
+    assert isinstance(fileName, str), "File name is not a string"
+    #-----------------------------------#
+
+    #I) Get access to necessary global variables
+    ''' The use of global variables can cause scoping issues. If the tables
+        used in the function are local variables that then get applied to the 
+        global variables it would help with any problems that may crop up.
+    '''
+    global DEBUG, debitTable, netTable, deliveredTable, receivedTable
+    
+    #II) Try to open and use the file
+    try:
+        inputFile = open(fileName, "r")
+        rawData = inputFile.readlines()
+
+        #A) Default the storage table to the size of the raw data - 1 in each
+        #       dimension (to account for the header row and row label)
+        ''' Could be placed in its own function to reduce duplication '''
+        debitTable     = [[0] * 12 for j in range(len(rawData) - 1)]
+        netTable       = [[0] * 12 for j in range(len(rawData) - 1)]
+        deliveredTable = [[0] * 12 for j in range(len(rawData) - 1)]
+        receivedTable  = [[0] * 12 for j in range(len(rawData) - 1)]
+        
+        #B) For each row in the file after the first/header row. This will cause
+        #       us to need to add one to each index while reading.
+        ''' This entire section could be its own function since this function
+            is already opening, reading, and populating the tables. It would help
+            with the cohesion of the function.
+        '''
+        for rowNum in range(0, len(rawData) - 1):
+            
+            #1) Split the line on the tab character
+            parsedRow = rawData[rowNum + 1].split("\t")
+                       
+            #2) For each of the 12 months of data (remember each row has a
+            #        leading column with the year data so +1 to each index)
+            for colNum in range(12):
+                
+                #a) Split the current record on a semi-colon and a space
+                currentMonth = parsedRow[colNum + 1].split("; ")
+
+                #b) If the debug flag is set to true, print debug statements
+                if DEBUG:
+                    print(currentMonth)
+                
+                #c) Store each element appropriately in the corresponding table
+                debitTable[rowNum][colNum]     = currentMonth[0]
+                netTable[rowNum][colNum]       = float(currentMonth[1])
+                deliveredTable[rowNum][colNum] = float(currentMonth[2])
+                receivedTable[rowNum][colNum]  = float(currentMonth[3])
+                
+        #C) Close the file
+        inputFile.close()
+
+    #III) If the file cannot be opened, display an error message
+    except (FileNotFoundError, OSError) as e:
+        print("File could not be opened properly.\n")
+
+#################################################################################
+#
+#   Function which takes in global lists that were processed in the readFile 
+#   function and analyzes the content of the files 
+#
+#   Precondition:  Global variables @debitTable, @netTable, @deliveredTable, and
+#                  @recievedTable are lists
+#   Precondition:  The tables are in the correct format with the proper dimensions
+#   Precondition:  The global variable @DEBUG is defined and set to a boolean value
+#   Postcondition: @numberMonths has the number of months analyzed
+#   Postcondition: @totalNet contains the net usage 
+#   Postcondition: The value of @totalDelivered is the total of the every element of 
+#                  @deliveredTable
+#   Postcondition: The value of @totalReceived is the total of the every element of 
+#                  @receivedTable
+#   Postcondition: If @DEBUG is true, it will print out the values of @numberMonths,
+#                  @totalNet, @totalDelivered, and @totalReceived
+#   Postcondition: 
+#   Invariant:     All global variables exist and are usable
+#   Invariant:     The variable @numberMonths always increases by 1 for each iteration
+#                  over the rows and columns of the tables.
+#   Invariant:     
+#
+#################################################################################
+def analyzeFile():
+
+    #I) Get access to necessary global variables
+    ''' Instead of using global variables, pass in the tables as function arguments'''
+    global DEBUG, debitTable, netTable, deliveredTable, receivedTable
+    global numberMonths, totalNet, totalDelivered, totalReceived
+
+    #-------- ASSERTION TESTING --------#
+    assert isinstance(debitTable, list), "Debit table is not a list"
+    assert isinstance(netTable, list), "Net table is not a list"
+    assert isinstance(deliveredTable, list), "Delivered table is not a list"
+    assert isinstance(receivedTable, list), "Received table is not a list"
+    #-----------------------------------#
+
+    #II) Initialize each of the necessary global variables
+    ''' Unnecessary. Global variables already initialized. Also so that 
+        potential problems can be avoided it would be better if these values
+        were local variables that then replaces the globals at the end. '''
+    numberMonths = totalNet = totalDelivered = totalReceived = 0
+
+    #III) For each row in the tables
+    for row in range(len(debitTable)):
+        
+        #A) For each column in the tables
+        for col in range(len(debitTable[0])):
+
+            #1) Increment the number of months
+            numberMonths += 1
+
+            #2) If the current entry in the debit table says "DEBIT"
+            if debitTable[row][col] == "DEBIT":
+                #a) Add the netTable entry from totalNet
+                totalNet += netTable[row][col]
+
+            #3) Else, if the current entry in the debit table says "CREDIT"
+            else:
+                #b) Subtract the netTable entry from totalNet
+                totalNet -= netTable[row][col]
+
+            #4) Add the current deliveredTable and receivedTable entries to
+            #       totalDelivered and totalReceived, respectively
+            totalDelivered += deliveredTable[row][col]
+            totalReceived  += receivedTable[row][col]
+            
+    #VI) If the debug flag is set to true, print debug statements
+    if DEBUG:
+        ''' 
+            This print statement is already handeled by the monthCount function.
+            It is possible to include the rest of the print statements in the monthCount
+            function and change the function name.
+        '''
+        print("Number of Months: " + str(numberMonths))
+        print("Total Net Usage:  " + str(totalNet))
+        print("Total Delivered:  " + str(totalDelivered))
+        print("Total Received:   " + str(totalReceived))
+
+#################################################################################
+#
+#   Function which prints out UI for command line output.
+#
+#   Precondition:  Length of @INPUTS is the same as the length of @MENU_TEXT
+#   Precondition:  Global variables @INPUTS and @MENU_TEXT exists and are both lists
+#   Postcondition: The function returns a menu header followed by the contents of
+#                  @INPUTS and @MENU_TEXT 
+#   Postcondition: The function returns the user input as a string
+#   Invariant:     Length of @INPUTS and @MENU_TEXT are equal throughout the execution
+#                  of the function
+#   Invariant:     The output of the function is consistent with the format given 
+#                  in the function
+#
+#################################################################################
+def printMenuAndGetInput():
+    
+    #I) Get access to necessary global variables
+    global INPUTS, MENU_TEXT
+
+    #-------- ASSERTION TESTING --------#
+    assert len(INPUTS) == len(MENU_TEXT), "List of valid inputs must be the same length as list of menu text"
+    #-----------------------------------#
+
+    #II) Print the menu header
+    print("----------------------------------")
+    print("MENU OPTIONS")
+    print("----------------------------------")
+
+    #III) Print the contents of the dynamic menu lists
+    for i in range(len(INPUTS)):
+        print(INPUTS[i] + ") " + MENU_TEXT[i])
+
+    #IV) Print the quit command
+    print("Q) Quit Program")
+    print("")
+
+    #V) Get and return input from the user
+    return input("> ")
+
+
+#---------------------- QUERY FUNCTIONS ----------------------#
+
+#################################################################################
+#
+#   Function which prints out the value of @numberMonths
+#
+#   Precondition: Global variable @numberMonths exists 
+#   Precondition: @numberMonths is a int
+#   Postcondition: The function returns a print statement that list the value of
+#                  @numberMonths
+#   Invariant:     @numberMonths stays an integer throughout the execution of the
+#                  function
+#
+#################################################################################
+def monthCount():
+    ''' numberMonths can be an argument for the function. This would prevent
+        any issues if this function is called before the value is initialized in
+        analyzeFile()'''
+    global numberMonths
+    print("Number of months in file: " + str(numberMonths) + "\n")
+
+#################################################################################
+#
+#   Function which takes in the global data variables and outputs the average
+#   of each by dividing by @numberMonths
+#
+#   Precondition:  Global variables @numberMonths, @totalNet, @totalDelivered, 
+#                  and @totalRecieved exists and are usable
+#   Precondition:  Global variables @numberMonths, @totalNet, @totalDelivered, 
+#                  and @totalRecieved are int
+#   Precondition:  The global variable @numberMonths is not 0 
+#   Postcondition: Return print statements that show the average of each
+#                  variable listed
+#   Invariant:     @numberMonths, @totalNet, @totalDelivered, and @totalRecieved
+#                  stay integers throughout the entire execution of the function
+#
+#################################################################################
+def analyzeData():
+    ''' All global variables can be arguments for the function. This would prevent
+        any issues if this function is called before the values are initialized in
+        analyzeFile()'''
+    global numberMonths, totalNet, totalDelivered, totalReceived
+    print("Avg. Net Use per Month:   " + str(totalNet/numberMonths))
+    print("Avg. Delivered per Month: " + str(totalDelivered/numberMonths))
+    print("Avg. Received per Month:  " + str(totalReceived/numberMonths))
+    print("Net Use Audit Difference: " + str(totalNet-(totalDelivered-totalReceived)))
+    print()
+
+#################################################################################
+#
+#   Function which calculates the expenses based on the debitTable and netTable lists.
+#
+#   Precondition: All imported global variables exist and are defined 
+#   Precondition: @netTable and @debitTable are lists
+#   Precondition: The variables @numberMonths, @totalNet, @totalDelivered, @totalRecieved
+#                 are integers
+#   Postcondition: The function will return the average, minimum, and maximum monthly
+#                  costs based on the the @cost per kWh
+#   Postcondition: The output will be formatted as seen in the function displaying the
+#                  value of @cost in USD
+#   Postcondition: If the global variable @DEBUG is True, then more information will be
+#                  outputted. Specifically the values of the minimum and maximum monthly
+#                  net usage.
+#   Invariant:     The contents of @netTable & @debitTable is not modified during
+#                  the execution of the function
+#
+#################################################################################
+def calculateExpenses():
+    ''' All of the global variables can be passed in as arguments to help scoping
+        issues.
+    '''
+    global DEBUG, netTable, debitTable
+    global numberMonths, totalNet, totalDelivered, totalReceived
+
+    #I) Continually ask the user for a cost until they give a valid number
+    cost = ""
+    while cost == "":
+        cost = input("What is the cost per kWh (current rate = 0.07): ")
+        try:
+            cost = float(cost)
+        except:
+            cost = ""
+
+    #II) Find the minimum and maximum monthly net usage
+    minRow = minCol = maxRow = maxCol = 0
+    ''' The if/else statement on the next line should be spread out
+        for better readability
+    '''
+    minSign = maxSign = 1 if debitTable[minRow][minCol] == "DEBIT" else -1
+    for row in range(len(netTable)):
+        for col in range(len(netTable[0])):
+            ''' The if/else statement on the next line should be spread out
+                for better readability
+            '''
+            sign = 1 if debitTable[row][col] == "DEBIT" else -1
+            if (sign * netTable[row][col]) < (minSign * netTable[minRow][minCol]):
+                minSign = sign
+                minRow = row
+                minCol = col
+            if (sign * netTable[row][col]) > (maxSign * netTable[maxRow][maxCol]):
+                maxSign = sign
+                maxRow = row
+                maxCol = col
+
+    #VI) If the debug flag is set to true, print debug statements
+    if DEBUG:
+        ''' The if statement could be improved by making it "if DEBUG == True:" to make it easier
+            to understand for others reading the code
+        '''
+        print("(" + str(minRow) + "," + str(minCol) + ")\t = " + str(minSign * netTable[minRow][minCol]))
+        print("(" + str(maxRow) + "," + str(maxCol) + ")\t = " + str(maxSign * netTable[maxRow][maxCol]))
+
+    #V) Print the average, min, and max monthly cost at the given rate
+    print("At a price of " + '${:,.2f}'.format(cost) + " per kWh, you can expect:")
+    print("---------------------------------------------")
+    print("Average Monthly Cost: " + '${:,.2f}'.format(cost * (totalNet/numberMonths)))
+    print("Minimum Monthly Cost: " + '${:,.2f}'.format(cost * minSign * netTable[minRow][minCol]))
+    print("Maximum Monthly Cost: " + '${:,.2f}'.format(cost * maxSign * netTable[maxRow][maxCol]))
+    print()
+
+
+#----------------------- MAIN FUNCTION -----------------------#
+
+
+def main(file = None):
+
+    #I) Get access to necessary global variables
+    global INPUTS, FUNCTIONS, DEBUG
+    
+    #II) Try to get the first command-line parameter
+    try:
+        fileName = sys.argv[1]
+        
+    #III) If there was an index exception, then there was no file name specified.
+    #       at the command line.
+    except IndexError as e:
+
+        #A) If the parameter file is populated, use that
+        if file is not None:
+            fileName = file
+        #B) Else, use the default file name
+        else
+            ''' Add a colon to make the else statement work'''
+            fileName = "usage-data.txt"
+        
+    #IV) Else, if it was any other kind of exception, display an error message,
+    #       then quit to command prompt
+    except:
+        '''
+            This except statement is too broad and it can make it difficult to pinpoint exactly
+            what went wrong. Expand this statement to include other types of exceptions. 
+        '''
+        input("No file specified and the default file name (usage-data.txt) does not exist.\nExiting...")
+        exit(-1)
+
+    #V) Read in the data from the file
+    readFile(fileName)
+
+    #VI) If the debug flag is set to true, print debug statements
+    ''' Can make the if statement if "DEBUG == True" for improved readability'''
+    if DEBUG:
+        print(debitTable)
+        print(netTable)
+        print(deliveredTable)
+        print(receivedTable)
+
+    #VII) Analyze the data
+    analyzeFile()
+
+    #VIII) While the user doesn't input a Q (in order to quit)
+    ''' This entire code block could be placed in its own function with the
+        currentInput as a parameter to make the code more modular
+    '''
+    currentInput = "M"
+    while currentInput.upper() in INPUTS:
+
+        #A) Print the menu and get user input
+        currentInput = printMenuAndGetInput()
+
+        #B) If the debug flag is set to true, print debug statements
+        if DEBUG:
+            print("Current Input => " + currentInput)
+
+        #C) Find the index of the element in the list, if it exists,
+        #       regardless of case
+        index = 0
+        while index < len(INPUTS) \
+                and INPUTS[index] != currentInput.upper():
+            index += 1
+
+        #D) If the input (ignoring case), matches an element in the inputs list
+        if currentInput.upper() in INPUTS:
+
+            #1) Dynamically run the function using the eval function
+            eval(FUNCTIONS[index])
+        
+
+if(__name__ == "__main__"):
+    main()
