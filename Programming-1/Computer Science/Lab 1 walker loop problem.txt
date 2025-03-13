@@ -1,0 +1,49 @@
+import stdio
+import random
+import sys
+
+#input
+n = int(sys.argv[1])
+evenN = True
+square = 0
+steps = 0
+
+#Determines if input is even
+if (n % 2 == 0):
+	evenN=True
+else:
+	evenN=False
+
+#Defines square if true, stops program if false
+if (evenN==True):
+	square= 2 * n
+else:
+	stdio.write('Try an even Number')
+
+#Defines variables for loop
+x = 0
+y = 0
+negSquare = square * -1
+direction = 0
+
+#Loop checks if either x or y is equal to square or negSquare
+while ((x or y != square) or (x or y != negSquare)):
+	direction = random.randrange(1,4)
+	if (direction == 1):
+		y = y + 1
+		steps = steps + 1
+	if (direction == 2):
+		y = y - 1
+		steps = steps + 1
+	if (direction == 3):
+		x = x + 1
+		steps = steps + 1
+	if (direction == 4):
+		x = x - 1
+		steps = steps + 1
+
+
+if (evenN==True):
+	stdio.write('The walker took ')
+	stdio.write(steps)
+	stdio.writeln(' steps.')

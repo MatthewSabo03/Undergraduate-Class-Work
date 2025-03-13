@@ -1,0 +1,59 @@
+while not stdio.isEmpty():
+	students = stdio.readString()
+	hw1 = stdio.readFloat()
+	quiz1 = stdio.readFloat()
+	hw2 = stdio.readFloat()
+	hw3 = stdio.readFloat()
+	midterm = stdio.readFloat()
+	hw4 = stdio.readFloat()
+	quiz2 = stdio.readFloat()
+	hw5 = stdio.readFloat()
+	hw6 = stdio.readFloat()
+	final = stdio.readFloat()
+	grade = (hw1+quiz1+hw2+hw3+midterm+hw4+quiz2+hw5+hw6+final)/10
+	format = '%s  %.1f  %.1f  %.1f  %.1f  %.1f  %.1f  %.1f  %.1f  %.1f  %.1f\n'
+	stdio.writef(format, students, hw1, quiz1, hw2, hw3, midterm, hw4, quiz2, hw5, hw6, final)
+
+grades = stdarray.create2D(0, 0, None)
+heading = stdio.readLine()
+i = 0
+while not stdio.isEmpty():
+	students = stdio.readString()
+	for i in range(10):
+		assignmentG = stdio.readFloat()
+		if len(grades) == 0:
+			grades[i] = assignmentG
+		else: 
+			grades += [assignmentG]
+		
+		i+=1
+	
+
+grades = stdarray.create2D(0, 0, None)
+heading = stdio.readLine()
+while not stdio.isEmpty():
+	students = stdio.readString()
+	for i in range(10):
+		if len(grades)==10:
+			row = [None]
+			grades += [row]
+			r += 1 #Keeps track of what row to put aGrades on
+		aGrades = stdio.readFloat()
+		
+		grades[r][i] = aGrades
+		i += 1
+	stdio.write(grades)
+
+
+
+
+
+
+
+
+
+
+
+
+
+#python calculate.py < grades.txt

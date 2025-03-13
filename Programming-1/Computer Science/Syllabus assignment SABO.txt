@@ -1,0 +1,19 @@
+Matthew Sabo
+CISC 120-01
+Assignment 1 -- Syllabus Assignment
+1-11-2022
+
+1. What is the late submission policy of this course?
+That no reduced grade will be given for late work but every assignment must be submitted
+
+2. What is the key to gaining confidence in programming?
+To figure out your own solutions and practice programming
+
+3. What is the prerequisite knowledge for this course? Do you feel comfortable with your familiarity with this information?
+A basic knowledge of how computers work. I would say I do since ive always been into computers and have done programming in high school.
+
+4. What are you most looking forward to about this course?
+Learning how to program and seeing what I can create.
+
+5. What are you biggest concerns about this course?
+Ive never been good with strict due dates and also I struggled with implementing loops into my code.
