@@ -1,0 +1,2 @@
+algorithm,MIN_SIZE,MAX_SIZE,TRIALS
+bubble_sort,32,512,20
