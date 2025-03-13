@@ -1,0 +1,9 @@
+For this specific implimentation they are both equally as efficent as each other. Since they both have the same groundwork and do about the same thing just using
+the different types of data structures. For example the stack function first sets up a bunch of variables and parameters that will be used in the rest of the function. 
+Then the algorithm that takes the input string and returns it as a list with all of the spaces and punctuation cut out and the elements of that list has the letters seperated. 
+The main while loop then runs until the counter variable i is not less than the middle value of the list. It then sets up another while loop where it adds the elements 
+left and right of the middle value in the list to leftStack and rightStack. After that while loop it goes through and pops the top value off of each stack and compares them. 
+If the values match then the boolean variable isPalindrome is set to true, otherwise it is set to false and the main while loop breaks since if it fails it is not a palindrome. 
+Then after the main while loop, it returns isPalindrome. The Queue function is almost the same in structure and logic to the Stack function. The only notable difference between the
+two is that the code used in the queue function is changed to be applicable to a queue rather than a stack. The function that would be nominally more efficent with different
+implimentation is the stack since it can be searched and would take less time then adding all of the elements to a queue and dequeueing each one.  

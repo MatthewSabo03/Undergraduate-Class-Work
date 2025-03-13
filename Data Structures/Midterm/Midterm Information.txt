@@ -1,0 +1,44 @@
+Thursday 8AM - Friday 5PM
+Hard Close at 5PM
+
+180 minutes to complete
+
+7 Questions (code and theory)
+10 points each, 70 total
+
+There will be a curve
+
+*****IF YOU HAVE TECH ISSUES EMAIL PROFESSOR*****
+
+Open Handwritten Notes 
+Open Non-Human Resources
+-Internet
+-Interpeter
+-Another Book
+-Textbook
+
+MUST REFERENCE OUTSIDE SOURCES
+-Failure to do so is plagiarism and will result in an F for the test and class
+
+Psudo-code is legal
+-Must be Unambiguous
+-Structured
+-Each statement easily turn into 1-3 lines of code
+
+***Don't give more than you need***
+
+-----TOPICS FOR TEST-----
+
+-Classes and Hierachies
+ -Extending and Inheriting
+
+-Arrays and Dynamic Arrays
+ -Using in code
+ -Theory of implementation/resizing
+
+-Linked Lists and Nodes
+ -Single and Double
+ -Using them in code
+ -Benifits and drawbacks of use and comparing to arrays/dynamic arrays
+
+https://github.com/PrincessAkira/road-to-yuzu-without-switch 

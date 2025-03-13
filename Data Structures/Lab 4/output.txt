@@ -1,0 +1,402 @@
+-------------------------------------------
+I) Test the BinaryNode object
+-------------------------------------------
+b2 neighbors:	parent:		10 = 10
+		left child:	40 = 40
+		left child:	50 = 50
+10:	10
+20:	20
+30:	30
+10:	10
+10:	10
+50:	50
+Taco:	Taco
+-------------------------------------------
+II) Test the insert function with integers
+-------------------------------------------
+                          10
+                       /      \
+                     5          15
+                   /   \      /    \
+                 2       8 12        20
+                       /  \/  \
+                     6    10    13
+                                   \
+                                     14
+| 10 |
+10 -> 
+
+-------
+
+| 5 -> 10 |
+5 -> 
+10 -> 
+
+-------
+
+| 5 -> 10 -> 15 |
+5 -> 
+10 -> 
+15 -> 
+
+-------
+
+| 2 -> 5 -> 10 -> 15 |
+2 -> 
+5 -> 
+10 -> 
+15 -> 
+
+-------
+| 2 -> 5 -> 10 -> 15 -> 20 |
+2 -> 
+5 -> 
+10 -> 
+15 -> 
+20 -> 
+
+-------
+
+| 2 -> 5 -> 10 -> 12 -> 15 -> 20 |
+2 -> 
+5 -> 
+10 -> 
+12 -> 
+15 -> 
+20 -> 
+
+-------
+
+| 2 -> 5 -> 8 -> 10 -> 12 -> 15 -> 20 |
+2 -> 
+5 -> 
+8 -> 
+10 -> 
+12 -> 
+15 -> 
+20 -> 
+
+-------
+| 2 -> 5 -> 8 -> 10 -> 10 -> 12 -> 15 -> 20 |
+2 -> 
+5 -> 
+8 -> 
+10 -> 
+10 -> 
+12 -> 
+15 -> 
+20 -> 
+
+-------
+
+| 2 -> 5 -> 8 -> 10 -> 10 -> 12 -> 13 -> 15 -> 20 |
+2 -> 
+5 -> 
+8 -> 
+10 -> 
+10 -> 
+12 -> 
+13 -> 
+15 -> 
+20 -> 
+
+-------
+| 2 -> 5 -> 6 -> 8 -> 10 -> 10 -> 12 -> 13 -> 15 -> 20 |
+2 -> 
+5 -> 
+6 -> 
+8 -> 
+10 -> 
+10 -> 
+12 -> 
+13 -> 
+15 -> 
+20 -> 
+
+-------
+| 2 -> 5 -> 6 -> 8 -> 10 -> 10 -> 12 -> 13 -> 14 -> 15 -> 20 |
+2 -> 
+5 -> 
+6 -> 
+8 -> 
+10 -> 
+10 -> 
+12 -> 
+13 -> 
+14 -> 
+15 -> 
+20 -> 
+-------------------------------------------
+III) Test the insert function with strings
+-------------------------------------------
+                        Louis
+                   /             \
+             Dana                  Walter
+              \                 /         \
+               Egon        Peter           Zuul
+                 \         /    \           /
+                Janine   Oscar  Ray      Winston
+                 /  \            \
+             Gozer Janosz       Slimer
+                                    \
+                                    Vigo
+| Louis Tully |
+Louis Tully -> 
+
+-------
+
+| Louis Tully -> Walter Peck |
+Louis Tully -> 
+Walter Peck -> 
+
+-------
+
+| Dana Barrett -> Louis Tully -> Walter Peck |
+Dana Barrett -> 
+Louis Tully -> 
+Walter Peck -> 
+
+-------
+
+| Dana Barrett -> Louis Tully -> Peter Venkman -> Walter Peck |
+Dana Barrett -> 
+Louis Tully -> 
+Peter Venkman -> 
+Walter Peck -> 
+
+-------
+| Dana Barrett -> Louis Tully -> Peter Venkman -> Ray Stanz -> Walter Peck |
+Dana Barrett -> 
+Louis Tully -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Walter Peck -> 
+
+-------
+
+| Dana Barrett -> Louis Tully -> Peter Venkman -> Ray Stanz -> Walter Peck
+	-> Zuul |
+Dana Barrett -> 
+Louis Tully -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Walter Peck -> 
+Zuul -> 
+
+-------
+
+| Dana Barrett -> Egon Spengler -> Louis Tully -> Peter Venkman -> Ray Stanz
+	-> Walter Peck -> Zuul |
+Dana Barrett -> 
+Egon Spengler -> 
+Louis Tully -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Walter Peck -> 
+Zuul -> 
+
+-------
+| Dana Barrett -> Egon Spengler -> Louis Tully -> Peter Venkman -> Ray Stanz
+	-> Walter Peck -> Winston Zeddemore -> Zuul |
+Dana Barrett -> 
+Egon Spengler -> 
+Louis Tully -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Walter Peck -> 
+Winston Zeddemore -> 
+Zuul -> 
+
+-------
+
+| Dana Barrett -> Egon Spengler -> Janine Melnitz -> Louis Tully ->
+	Peter Venkman -> Ray Stanz -> Walter Peck -> Winston Zeddemore -> Zuul |
+Dana Barrett -> 
+Egon Spengler -> 
+Janine Melnitz -> 
+Louis Tully -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Walter Peck -> 
+Winston Zeddemore -> 
+Zuul -> 
+
+-------
+| Dana Barrett -> Egon Spengler -> Janine Melnitz -> Louis Tully ->
+	Peter Venkman -> Ray Stanz -> Slimer -> Walter Peck ->
+	Winston Zeddemore -> Zuul |
+Dana Barrett -> 
+Egon Spengler -> 
+Janine Melnitz -> 
+Louis Tully -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Slimer -> 
+Walter Peck -> 
+Winston Zeddemore -> 
+Zuul -> 
+
+-------
+
+| Dana Barrett -> Egon Spengler -> Gozer the Gozerian ->
+	Janine Melnitz -> Louis Tully -> Peter Venkman -> Ray Stanz ->
+	Slimer -> Walter Peck -> Winston Zeddemore -> Zuul |
+Dana Barrett -> 
+Egon Spengler -> 
+Gozer the Gozerian -> 
+Janine Melnitz -> 
+Louis Tully -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Slimer -> 
+Walter Peck -> 
+Winston Zeddemore -> 
+Zuul -> 
+
+-------
+| Dana Barrett -> Egon Spengler -> Gozer the Gozerian ->
+	Janine Melnitz -> Louis Tully -> Peter Venkman -> Ray Stanz ->
+	Slimer -> Vigo the Carpathian -> Walter Peck -> Winston Zeddemore ->
+	Zuul |
+Dana Barrett -> 
+Egon Spengler -> 
+Gozer the Gozerian -> 
+Janine Melnitz -> 
+Louis Tully -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Slimer -> 
+Vigo the Carpathian -> 
+Walter Peck -> 
+Winston Zeddemore -> 
+Zuul -> 
+
+-------
+
+| Dana Barrett -> Egon Spengler -> Gozer the Gozerian ->
+	Janine Melnitz -> Janosz Poha -> Louis Tully -> Peter Venkman ->
+	Ray Stanz -> Slimer -> Vigo the Carpathian -> Walter Peck ->
+	Winston Zeddemore -> Zuul |
+Dana Barrett -> 
+Egon Spengler -> 
+Gozer the Gozerian -> 
+Janine Melnitz -> 
+Janosz Poha -> 
+Louis Tully -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Slimer -> 
+Vigo the Carpathian -> 
+Walter Peck -> 
+Winston Zeddemore -> 
+Zuul -> 
+
+-------
+| Dana Barrett -> Egon Spengler -> Gozer the Gozerian ->
+	Janine Melnitz -> Janosz Poha -> Louis Tully -> Oscar ->
+	Peter Venkman -> Ray Stanz -> Slimer -> Vigo the Carpathian ->
+	Walter Peck -> Winston Zeddemore -> Zuul |
+Dana Barrett -> 
+Egon Spengler -> 
+Gozer the Gozerian -> 
+Janine Melnitz -> 
+Janosz Poha -> 
+Louis Tully -> 
+Oscar -> 
+Peter Venkman -> 
+Ray Stanz -> 
+Slimer -> 
+Vigo the Carpathian -> 
+Walter Peck -> 
+Winston Zeddemore -> 
+Zuul -> 
+-------------------------------------------
+#IV) Test the full tree construction
+-------------------------------------------
+13:	13
+12:	12
+15:	15
+10:	10
+None:	None
+
+Gozer:	Gozer the Gozerian
+Janine:	Janine Melnitz
+Egon:	Egon Spengler
+Dana:	Dana Barrett
+Louis:	Louis Tully
+None:	None
+
+Janosz:	Janosz Poha
+Janine:	Janine Melnitz
+Egon:	Egon Spengler
+Dana:	Dana Barrett
+Louis:	Louis Tully
+None:	None
+
+-------------------------------------------
+#IV) Test the iterative path function
+-------------------------------------------
+10, 15, 12, 13, 14	= 10 -> 15 -> 12 -> 13 -> 14
+10, 15, 20		= 10 -> 15 -> 20
+10, 5, 8, 6		= 10 -> 5 -> 8 -> 6
+10, 5			= 10 -> 5
+10			= 10
+None			= None
+None			= None
+None			= None
+None			= None
+
+Louis, Dana, Egon, Janine, Janosz
+ = Louis Tully -> Dana Barrett -> Egon Spengler -> Janine Melnitz -> Janosz Poha
+
+Louis, Dana, Egon, Janine, Gozer
+ = Louis Tully -> Dana Barrett -> Egon Spengler -> Janine Melnitz -> Gozer the Gozerian
+
+Louis, Walter, Peter, Ray, Slimer
+ = Louis Tully -> Walter Peck -> Peter Venkman -> Ray Stanz -> Slimer
+
+Louis, Walter, Peter
+ = Louis Tully -> Walter Peck -> Peter Venkman
+
+Louis, Walter, Zuul, Winston
+ = Louis Tully -> Walter Peck -> Zuul -> Winston Zeddemore
+
+Louis Tully			= Louis Tully
+None				= None
+None				= None
+None				= None
+None				= None
+
+-------------------------------------------
+#V) Test the recursive path function
+-------------------------------------------
+10, 15, 12, 13, 14	= 10 -> 15 -> 12 -> 13 -> 14
+10, 15, 20		= 10 -> 15 -> 20
+10, 5, 8, 6		= 10 -> 5 -> 8 -> 6
+10, 5			= 10 -> 5
+10			= 10
+None			= None
+None			= None
+None			= None
+None			= None
+
+Louis, Dana, Egon, Janine, Janosz
+ = Louis Tully -> Dana Barrett -> Egon Spengler -> Janine Melnitz -> Janosz Poha
+
+Louis, Dana, Egon, Janine, Gozer
+ = Louis Tully -> Dana Barrett -> Egon Spengler -> Janine Melnitz -> Gozer the Gozerian
+
+Louis, Walter, Peter, Ray, Slimer
+ = Louis Tully -> Walter Peck -> Peter Venkman -> Ray Stanz -> Slimer
+
+Louis, Walter, Peter
+ = Louis Tully -> Walter Peck -> Peter Venkman
+
+Louis, Walter, Zuul, Winston
+ = Louis Tully -> Walter Peck -> Zuul -> Winston Zeddemore
+
+Louis Tully			= Louis Tully
+None				= None
+None				= None
+None				= None
+None				= None
